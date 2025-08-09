@@ -1,4 +1,4 @@
-import { createElement, CSSProperties, ElementType, forwardRef } from "react";
+import { createElement, CSSProperties, ElementType, forwardRef, ReactNode } from "react";
 
 export interface FlexProps {
     as?: ElementType;
@@ -8,26 +8,25 @@ export interface FlexProps {
     wrap?: "wrap" | "nowrap";
     gap?: number;
     className?: string;
-    children?: React.ReactNode;
-    style?: CSSProperties; // 인라인 스타일 추가
+    children?: ReactNode;
+    style?: CSSProperties;
 }
 
-const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
-    const {
-        as: Component = "div",
-        direction,
-        justify,
-        align,
-        wrap,
-        gap,
-        className,
-        children,
-        style,
-        ...rest
-    } = props;
-
-    return createElement(Component, {
+const Flex = forwardRef<HTMLDivElement, FlexProps>(({
+    as: Component = "div",
+    direction,
+    justify,
+    align,
+    wrap,
+    gap,
+    className,
+    children,
+    style,
+    ...rest
+}, ref) => {
+    const element = createElement(Component, {
         ref,
+        className,
         style: {
             display: "flex",
             flexDirection: direction,
@@ -35,12 +34,14 @@ const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
             alignItems: align,
             flexWrap: wrap,
             gap: gap,
-            ...style, // 사용자 지정 스타일 병합
+            ...style,
         },
-        children,
-        className,
         ...rest
-    });
+    }, children);
+
+    return element;
 });
+
+Flex.displayName = 'Flex';
 
 export default Flex;
