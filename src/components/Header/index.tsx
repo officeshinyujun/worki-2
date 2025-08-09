@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function Header() {
     return (
         <HStack className={s.container} align="center" justify="flex-start">
-            <Image src={logo} alt="logo" width={73} height={19} /> {/* 수정된 부분 */}
+            <Image src={logo} alt="logo" width={73} height={19} style={{margin : '0 16px'}} /> {/* 수정된 부분 */}
         </HStack>
     );
 }
