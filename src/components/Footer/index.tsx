@@ -8,7 +8,9 @@ export default function Footer() {
         <VStack className={s.container} align="flex-start" justify="flex-start" gap={16}>
             <HStack align="center" justify="flex-start" gap={8}>
                 <p>@made by shinyujun</p>
-                <Github width={22} height={22} color="white" />
+                <a href="https://github.com/officeshinyujun/worki-2">
+                    <Github width={22} height={22} color="white" />
+                </a>
             </HStack>
         </VStack>
     );
