@@ -1,0 +1,64 @@
+@use "@/style/spacing" as *;
+
+.linkWrapper {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    min-height: 200px;
+    padding: $spacing-md;
+    position: relative;  /* Create a stacking context */
+    isolation: isolate;  /* Create a new stacking context */
+    border-radius: 8px;
+    overflow: hidden;
+    
+
+    /* Background image container */
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: var(--background-image);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -2;  /* Behind everything */
+    }
+    
+    /* Overlay */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: -1;  /* Between background and content */
+    }
+}
+
+/* Content */
+.name, .description, .tags {
+    position: relative;
+    z-index: 1;  /* Above both background and overlay */
+}
+
+.name {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.description {
+    font-size: 16px;
+    color: #B1B1B1;
+    font-weight: 500;
+}
