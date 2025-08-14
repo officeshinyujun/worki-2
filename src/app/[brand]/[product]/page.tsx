@@ -3,11 +3,16 @@ import data from '@/data/data.json';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function ProductPage({ 
-  params 
-}: { 
-  params: { brand: string; product: string } 
-}) {
+type ProductParams = {
+  brand: string;
+  product: string;
+};
+
+type ProductPageProps = {
+  params: ProductParams;
+};
+
+export default function ProductPage({ params }: ProductPageProps) {
   const brand = data[params.brand as keyof typeof data];
   
   if (!brand) {
@@ -51,18 +56,18 @@ export default function ProductPage({
   );
 }
 
-export async function generateStaticParams() {
-  const params : { brand: string; product: string }[] = [];
+export async function generateStaticParams(): Promise<ProductParams[]> {
+  const params: ProductParams[] = [];
   
   for (const brand in data) {
     const brandData = data[brand as keyof typeof data];
-    brandData.products.forEach((product: { name: string; intruduction: string; photo: string[] }, index: number) => {
+    brandData.products.forEach((_: unknown, index: number) => {
       params.push({
         brand,
         product: index.toString(),
       });
     });
   }
-
+  
   return params;
 }
