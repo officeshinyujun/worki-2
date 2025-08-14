@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import data from '@/data/data.json';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProductPage({ 
   params 
@@ -32,12 +33,16 @@ export default function ProductPage({
         {product.photo && (
           <div className="product-images">
             {product.photo.map((image: string, index: number) => (
-              <img 
-                key={index} 
-                src={image.startsWith('/') ? image : `/${image}`}
-                alt={`${product.name} - Image ${index + 1}`}
-                className="product-image"
-              />
+              <div key={index} className="product-image-container">
+                <Image 
+                  src={image.startsWith('/') ? image : `/${image}`}
+                  alt={`${product.name} - Image ${index + 1}`}
+                  width={500}
+                  height={300}
+                  className="product-image"
+                  priority={index === 0}
+                />
+              </div>
             ))}
           </div>
         )}
@@ -51,7 +56,7 @@ export async function generateStaticParams() {
   
   for (const brand in data) {
     const brandData = data[brand as keyof typeof data];
-    brandData.products.forEach((_: any, index: number) => {
+    brandData.products.forEach((product: { name: string; intruduction: string; photo: string[] }, index: number) => {
       params.push({
         brand,
         product: index.toString(),
