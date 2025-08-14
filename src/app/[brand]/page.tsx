@@ -10,7 +10,7 @@ type PageProps = {
 };
 
 export default async function BrandPage({ params }: PageProps) {
-  const { brand } = await params; // ✅ 비동기 해제
+  const { brand } = await params;
   const brandKey = brand as BrandKey;
   const brandData = data[brandKey];
 
