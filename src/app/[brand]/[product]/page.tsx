@@ -13,7 +13,8 @@ interface ProductPageProps {
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
+export default function ProductPage({ params }: {params: any}) {
+    //@ts-ignore
   const brand = data[params.brand];
 
   if (!brand) {
@@ -39,7 +40,9 @@ export default function ProductPage({ params }: ProductPageProps) {
 
         {product.photo?.length > 0 && (
           <div className="product-images">
-            {product.photo.map((image, index) => (
+            {product.photo.map(
+                //@ts-ignore
+                (image, index) => (
               <div key={index} className="product-image-container">
                 <Image
                   src={`/images${image}`}
