@@ -10,7 +10,7 @@
 .container {
     width: 100%;
     min-height: 200px;
-    padding: $spacing-md;
+    padding: 20px;
     position: relative;  /* Create a stacking context */
     isolation: isolate;  /* Create a new stacking context */
     border-radius: 8px;

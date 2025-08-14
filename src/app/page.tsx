@@ -6,7 +6,7 @@ import UserBox from "@/components/UserBox";
 import data from "@/data/data.json";
 export default function Home() {
     return (
-    <VStack className={s.container} align="center" justify="space-between">
+    <VStack className={s.container} align="center" justify="flex-start">
         <Header />
         <VStack gap={16} align="flex-start" justify="flex-start" className={s.userBoxContainer}>
             <UserBox name={data.haed.name} description={data.haed.description} tags={data.haed.tags} backgroundImage={data.haed.products[0].photo[0]} link="/haed" />

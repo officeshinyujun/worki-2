@@ -21,7 +21,7 @@ export default function UserBox({ name, description, tags, backgroundImage, link
                 className={s.container}
                 align="flex-start"
                 justify="flex-start"
-                gap={8}
+                gap={16}
                 style={{
                     '--background-image': `url(${fullImagePath})`
                 } as React.CSSProperties}
