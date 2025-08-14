@@ -8,12 +8,13 @@ import Image from 'next/image';
 import type { BrandKey } from '@/types/index.d.ts';
 
 // 페이지 컴포넌트 props 타입
-type ProductPageProps = {
+interface ProductPageProps {
   params: {
     brand: BrandKey;
     product: string;
   };
-};
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
 
 export default function ProductPage({ params }: ProductPageProps) {
   const brand = data[params.brand];
