@@ -22,7 +22,7 @@ export default function BrandPage({ params }: { params: { brand: string } }) {
 
       <h2>Products</h2>
       <div className="products">
-        {brand.products.map((product: any, index: number) => (
+        {brand.products.map((product: {name: string; intruduction: string; photo: string[] }, index: number) => (
           <Link href={`/${params.brand}/${index}`} key={index} className="product-card">
             <h3>{product.name}</h3>
             <p>{product.intruduction}</p>
