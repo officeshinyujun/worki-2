@@ -1,38 +1,39 @@
-// src/app/[brand]/page.tsx
 import { notFound } from 'next/navigation';
 import data from '@/data/data.json';
 import Link from 'next/link';
 import type { BrandKey } from '@/types';
 
-type BrandPageProps = {
-  params: {
-    brand: BrandKey;
-  };
+type PageProps = {
+  params: Promise<{
+    brand: string;
+  }>;
 };
 
-export default function BrandPage({ params }: BrandPageProps) {
-  const brand = data[params.brand];
-  
-  if (!brand) {
+export default async function BrandPage({ params }: PageProps) {
+  const { brand } = await params; // ✅ 비동기 해제
+  const brandKey = brand as BrandKey;
+  const brandData = data[brandKey];
+
+  if (!brandData) {
     notFound();
   }
 
   return (
     <div className="container">
-      <h1>{brand.name}</h1>
-      <p>{brand.description}</p>
+      <h1>{brandData.name}</h1>
+      <p>{brandData.description}</p>
       
       <div className="tags">
-        {brand.tags.map((tag, index) => (
+        {brandData.tags.map((tag, index) => (
           <span key={index} className="tag">{tag}</span>
         ))}
       </div>
 
       <h2>작품 목록</h2>
       <div className="products">
-        {brand.products.map((product, index) => (
+        {brandData.products.map((product, index) => (
           <Link 
-            href={`/${params.brand}/${index}`} 
+            href={`/${brandKey}/${index}`} 
             key={index} 
             className="product-card"
           >
@@ -47,6 +48,6 @@ export default function BrandPage({ params }: BrandPageProps) {
 
 export async function generateStaticParams() {
   return Object.keys(data).map(brand => ({
-    brand: brand as BrandKey,
+    brand,
   }));
 }

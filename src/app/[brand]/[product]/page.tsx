@@ -22,9 +22,8 @@ export default async function ProductPage({
   params: Promise<PageParams>;
   searchParams?: Promise<SearchParams>;
 }) {
-  // ✅ Next.js 15 규칙에 따라 params와 searchParams 비동기 해제
+  // ✅ 비동기 props 해제
   const { brand: brandKey, product: productId } = await params;
-  const resolvedSearchParams = searchParams ? await searchParams : undefined;
 
   const brand = data[brandKey];
   if (!brand) notFound();
