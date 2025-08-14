@@ -1,19 +1,22 @@
+// src/app/[brand]/[product]/page.tsx
 import { notFound } from 'next/navigation';
 import data from '@/data/data.json';
 import Link from 'next/link';
 import Image from 'next/image';
 
-type ProductParams = {
-  brand: string;
-  product: string;
-};
+// 타입 가져오기
+import type { BrandKey } from '@/types/index.d.ts';
 
+// 페이지 컴포넌트 props 타입
 type ProductPageProps = {
-  params: ProductParams;
+  params: {
+    brand: BrandKey;
+    product: string;
+  };
 };
 
 export default function ProductPage({ params }: ProductPageProps) {
-  const brand = data[params.brand as keyof typeof data];
+  const brand = data[params.brand];
   
   if (!brand) {
     notFound();
@@ -28,7 +31,7 @@ export default function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="container">
       <Link href={`/${params.brand}`} className="back-link">
-        ← Back to {brand.name}
+        ← {brand.name}으로 돌아가기
       </Link>
       
       <h1>{product.name}</h1>
@@ -37,11 +40,11 @@ export default function ProductPage({ params }: ProductPageProps) {
         
         {product.photo && (
           <div className="product-images">
-            {product.photo.map((image: string, index: number) => (
+            {product.photo.map((image, index) => (
               <div key={index} className="product-image-container">
                 <Image 
-                  src={image.startsWith('/') ? image : `/${image}`}
-                  alt={`${product.name} - Image ${index + 1}`}
+                  src={`/images${image}`}
+                  alt={`${product.name} - 이미지 ${index + 1}`}
                   width={500}
                   height={300}
                   className="product-image"
@@ -56,18 +59,12 @@ export default function ProductPage({ params }: ProductPageProps) {
   );
 }
 
-export async function generateStaticParams(): Promise<ProductParams[]> {
-  const params: ProductParams[] = [];
-  
-  for (const brand in data) {
-    const brandData = data[brand as keyof typeof data];
-    brandData.products.forEach((_: unknown, index: number) => {
-      params.push({
-        brand,
-        product: index.toString(),
-      });
-    });
-  }
-  
-  return params;
+// 정적 생성 경로
+export async function generateStaticParams() {
+  return Object.entries(data).flatMap(([brand, brandData]) => 
+    brandData.products.map((_, index) => ({
+      brand: brand as BrandKey,
+      product: index.toString(),
+    }))
+  );
 }
