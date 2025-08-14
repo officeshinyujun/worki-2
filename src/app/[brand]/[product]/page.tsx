@@ -1,36 +1,40 @@
-// src/app/[brand]/[product]/page.tsx
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 
 import data from '@/data/data.json';
 import type { BrandKey } from '@/types/index.d.ts';
-interface ProductPageProps {
-  params: {
-    brand: BrandKey;
-    product: string;
-  };
-  searchParams?: { [key: string]: string | string[] | undefined };
+
+interface PageParams {
+  brand: BrandKey;
+  product: string;
 }
 
-export default function ProductPage({ params }: {params: any}) {
-    //@ts-ignore
-  const brand = data[params.brand];
+interface SearchParams {
+  [key: string]: string | string[] | undefined;
+}
 
-  if (!brand) {
-    notFound();
-  }
+export default async function ProductPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<PageParams>;
+  searchParams?: Promise<SearchParams>;
+}) {
+  // ✅ 비동기 props 해제
+  const { brand: brandKey, product: productId } = await params;
 
-  const productIndex = parseInt(params.product, 10);
+  const brand = data[brandKey];
+  if (!brand) notFound();
+
+  const productIndex = parseInt(productId, 10);
   const product = brand.products[productIndex];
-
-  if (!product) {
-    notFound();
-  }
+  if (!product) notFound();
 
   return (
     <div className="container">
-      <Link href={`/${params.brand}`} className="back-link">
+      {/* 뒤로 가기 링크 */}
+      <Link href={`/${brandKey}`} className="back-link">
         ← {brand.name}으로 돌아가기
       </Link>
 
@@ -38,11 +42,10 @@ export default function ProductPage({ params }: {params: any}) {
       <div className="product-content">
         <p>{product.intruduction}</p>
 
+        {/* 제품 이미지 목록 */}
         {product.photo?.length > 0 && (
           <div className="product-images">
-            {product.photo.map(
-                //@ts-ignore
-                (image, index) => (
+            {product.photo.map((image, index) => (
               <div key={index} className="product-image-container">
                 <Image
                   src={`/images${image}`}
@@ -61,10 +64,7 @@ export default function ProductPage({ params }: {params: any}) {
   );
 }
 
-// 정적 생성 경로 타입 명시
-export async function generateStaticParams(): Promise<
-  { brand: BrandKey; product: string }[]
-> {
+export async function generateStaticParams(): Promise<PageParams[]> {
   return Object.entries(data).flatMap(([brand, brandData]) =>
     brandData.products.map((_, index) => ({
       brand: brand as BrandKey,
