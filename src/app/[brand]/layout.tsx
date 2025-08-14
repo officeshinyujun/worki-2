@@ -1,21 +1,32 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
-type LayoutProps = {
-  children: ReactNode;
-  params: {
-    brand: string;
-  };
+// Define the params type
+type Params = {
+  brand: string;
 };
 
-export async function generateMetadata({ params }: { params: { brand: string } }): Promise<Metadata> {
+type LayoutProps = {
+  children: ReactNode;
+  params: Params | Promise<Params>;
+};
+
+// Helper function to safely extract params
+async function getParams(params: Params | Promise<Params>): Promise<Params> {
+  return await Promise.resolve(params);
+}
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { brand } = await getParams(params);
   return {
-    title: `${params.brand.toUpperCase()} - Worki`,
-    description: `View ${params.brand}'s portfolio on Worki`,
+    title: `${brand.toUpperCase()} - Worki`,
+    description: `View ${brand}'s portfolio on Worki`,
   };
 }
 
-export default function BrandLayout({ children }: LayoutProps) {
+export default async function BrandLayout({ children, params }: LayoutProps) {
+  const { brand } = await getParams(params);
+  
   return (
     <main className="brand-page">
       {children}

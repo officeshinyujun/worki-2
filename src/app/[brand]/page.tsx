@@ -3,14 +3,22 @@ import data from '@/data/data.json';
 import Link from 'next/link';
 import type { BrandKey } from '@/types';
 
-type PageProps = {
-  params: {
-    brand: string;
-  };
+type Params = {
+  brand: string;
 };
 
-export default function BrandPage({ params }: PageProps) {
-  const brandKey = params.brand as BrandKey;
+type PageProps = {
+  params: Params | Promise<Params>;
+};
+
+// Helper function to safely extract params
+async function getParams(params: Params | Promise<Params>): Promise<Params> {
+  return await Promise.resolve(params);
+}
+
+export default async function BrandPage({ params }: PageProps) {
+  const { brand } = await getParams(params);
+  const brandKey = brand as BrandKey;
   const brandData = data[brandKey];
 
   if (!brandData) {
