@@ -6,6 +6,9 @@ export default function Home() {
     return (
     <VStack className={s.container} align="center" justify="space-between">
         <Header />
+        <VStack>
+            
+        </VStack>
         <Footer />
     </VStack>
     );
