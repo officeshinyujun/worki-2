@@ -5,19 +5,15 @@ import Image from 'next/image';
 
 import data from '@/data/data.json';
 import type { BrandKey } from '@/types/index.d.ts';
-
-// Next.js App Router의 PageProps 타입 정의
-interface Params {
-  brand: BrandKey;
-  product: string;
-}
-
-interface PageProps {
-  params: Params;
+interface ProductPageProps {
+  params: {
+    brand: BrandKey;
+    product: string;
+  };
   searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-export default function ProductPage({ params }: PageProps) {
+export default function ProductPage({ params }: ProductPageProps) {
   const brand = data[params.brand];
 
   if (!brand) {
@@ -62,8 +58,10 @@ export default function ProductPage({ params }: PageProps) {
   );
 }
 
-// 정적 생성 경로
-export async function generateStaticParams(): Promise<Params[]> {
+// 정적 생성 경로 타입 명시
+export async function generateStaticParams(): Promise<
+  { brand: BrandKey; product: string }[]
+> {
   return Object.entries(data).flatMap(([brand, brandData]) =>
     brandData.products.map((_, index) => ({
       brand: brand as BrandKey,
