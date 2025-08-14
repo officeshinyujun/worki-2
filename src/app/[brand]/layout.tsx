@@ -1,22 +1,21 @@
 import type { Metadata } from 'next';
-import type { BrandKey } from '@/types';
+import type { ReactNode } from 'react';
 
 type LayoutProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   params: {
     brand: string;
   };
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ brand: string }> }): Promise<Metadata> {
-  const { brand } = await params;
+export async function generateMetadata({ params }: { params: { brand: string } }): Promise<Metadata> {
   return {
-    title: `${brand.toUpperCase()} - Worki`,
-    description: `View ${brand}'s portfolio on Worki`,
+    title: `${params.brand.toUpperCase()} - Worki`,
+    description: `View ${params.brand}'s portfolio on Worki`,
   };
 }
 
-export default function BrandLayout({ children, params }: LayoutProps) {
+export default function BrandLayout({ children }: LayoutProps) {
   return (
     <main className="brand-page">
       {children}
