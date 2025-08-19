@@ -18,15 +18,15 @@ export default function CommentBox() {
                 />
             ))}
             <input type="text" className={s.nameInput} placeholder="남길 이름을 입력하십시오..."/>
-            <HStack align="center" justify="center" gap={16} className={s.commentInput}>
-                <input type="text" placeholder="댓글을 입력하세요..."/>
-                <button>
-                <ArrowUpFromLine
+            <HStack align="center" justify="center" gap={12} style={{width: '100%'}}>
+                <input type="text" placeholder="댓글을 입력하세요..." className={s.commentInput}/>
+                <button className={s.commentButton}>
+                    <ArrowUpFromLine
                     size={24}
                     color="white"
-                />
+                    />
                 </button>
-            </HStack>   
+            </HStack>
         </VStack>
     );
 }
