@@ -1,18 +1,12 @@
 // src/app/[brand]/[product]/page.tsx
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import Image from 'next/image';
-
 import data from '@/data/data.json';
 import type { BrandKey } from '@/types/index.d.ts';
+import ProductContent from '@/components/product/ProductContent';
 
 interface PageParams {
   brand: BrandKey;
   product: string;
-}
-
-interface SearchParams {
-  [key: string]: string | string[] | undefined;
 }
 
 export default async function ProductPage({
@@ -20,46 +14,29 @@ export default async function ProductPage({
 }: {
   params: Promise<PageParams>;
 }) {
-  // ✅ 비동기 props 해제
   const { brand: brandKey, product: productId } = await params;
-
   const brand = data[brandKey];
+  
   if (!brand) notFound();
 
   const productIndex = parseInt(productId, 10);
   const product = brand.products[productIndex];
+  
   if (!product) notFound();
 
+  // Handle the typo in the data
+  const productWithTypo = product as any;
+  const normalizedProduct = {
+    ...product,
+    introduction: productWithTypo.introduction || productWithTypo.intruduction || ''
+  };
+
   return (
-    <div className="container">
-      {/* 뒤로 가기 링크 */}
-      <Link href={`/${brandKey}`} className="back-link">
-        ← {brand.name}으로 돌아가기
-      </Link>
-
-      <h1>{product.name}</h1>
-      <div className="product-content">
-        <p>{product.intruduction}</p>
-
-        {/* 제품 이미지 목록 */}
-        {product.photo?.length > 0 && (
-          <div className="product-images">
-            {product.photo.map((image, index) => (
-              <div key={index} className="product-image-container">
-                <Image
-                  src={`/images${image}`}
-                  alt={`${product.name} - 이미지 ${index + 1}`}
-                  width={500}
-                  height={300}
-                  className="product-image"
-                  priority={index === 0}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
+    <ProductContent 
+      brand={brand}
+      product={normalizedProduct}
+      brandKey={brandKey}
+    />
   );
 }
 
