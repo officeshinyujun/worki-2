@@ -6,9 +6,11 @@ import { HStack } from '../HStack';
 import { ChevronLeft } from 'lucide-react';
 import ProductBox from '../ProductBox';
 import s from '../../app/[brand]/style.module.scss';
+import { useRouter } from 'next/navigation';
 
 type BrandContentProps = {
   brandName: string;
+  brandLink: string;
   products: Array<{
     name: string;
     intruduction?: string; // Handle typo in the data
@@ -16,11 +18,10 @@ type BrandContentProps = {
   }>;
 };
 
-export default function BrandContent({ brandName, products }: BrandContentProps) {
-
-    
+export default function BrandContent({ brandName, brandLink, products }: BrandContentProps) {
+  const router = useRouter();
   const handleBack = () => {
-    window.history.back();
+    router.push(`/`);
   };
   useEffect(() => {
     console.log('Products loaded:', products);
@@ -38,12 +39,17 @@ export default function BrandContent({ brandName, products }: BrandContentProps)
         </div>
         <VStack gap={16} align='flex-start' justify='flex-start'>
           {products.map((product, index) => (
-            <ProductBox
-              key={index}
-              name={product.name}
-              description={product.intruduction || ''}
-              backgroundImage={product.photo?.[0] || ''}
-            />
+            <div 
+              key={index} 
+              onClick={() => router.push(`/${brandLink}/${index}`)}
+              style={{ width: '100%', cursor: 'pointer' }}
+            >
+              <ProductBox
+                name={product.name}
+                description={product.intruduction || ''}
+                backgroundImage={product.photo?.[0] || ''}
+              />
+            </div>
           ))}
         </VStack>
       </VStack>

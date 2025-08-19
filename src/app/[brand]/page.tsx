@@ -32,6 +32,7 @@ export default async function BrandPage({ params }: any) {
   return (
     <BrandContent 
       brandName={brandData.name}
+      brandLink={brandData.link || brandKey}
       products={normalizedProducts}
     />
   );

@@ -1,12 +1,18 @@
 'use client';
 
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { VStack } from '../VStack';
+import s from './style.module.scss';
+import { ChevronLeft } from 'lucide-react';
+import Image from 'next/image';
+
+interface Brand {
+  name: string;
+  link: string;
+}
 
 interface ProductContentProps {
-  brand: {
-    name: string;
-  };
+  brand: Brand;
   product: {
     name: string;
     introduction?: string;
@@ -19,37 +25,25 @@ export default function ProductContent({ brand, product, brandKey }: ProductCont
   const router = useRouter();
 
   return (
-    <div className="container">
-      {/* 뒤로 가기 버튼 */}
-      <button 
-        onClick={() => router.back()}
-        className="back-link"
-      >
-        ← {brand.name}으로 돌아가기
-      </button>
-
-      <h1>{product.name}</h1>
-      <div className="product-content">
-        <p>{product.introduction}</p>
-
-        {/* 제품 이미지 목록 */}
-        {product.photo?.length > 0 && (
-          <div className="product-images">
-            {product.photo.map((image, index) => (
-              <div key={index} className="product-image-container">
-                <Image
-                  src={`/images${image}`}
-                  alt={`${product.name} - 이미지 ${index + 1}`}
-                  width={500}
-                  height={300}
-                  className="product-image"
-                  priority={index === 0}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+    <VStack className={s.container} justify='flex-start' align='flex-start' gap={16}>
+    <div style={{ cursor: 'pointer' }}>
+        <ChevronLeft 
+        size={30}  // Using size instead of width/height
+        color='black' 
+        onClick={() => router.push(`/${brand.link}`)}
+      />
     </div>
+      <VStack justify='flex-start' align='flex-start' gap={12}>
+        <Image 
+          src={`/images${product.photo[0]}`} 
+          alt={product.name} 
+          className={s.thumbnail} 
+          width={500} 
+          height={300} 
+        />
+        <p className={s.name}>{product.name}</p>
+        <p className={s.introduction}>{product.introduction}</p>
+      </VStack>
+    </VStack>
   );
 }

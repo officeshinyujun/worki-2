@@ -1,5 +1,6 @@
 {
     "haed" : {
+        "link" : "haed",
         "name" : "haedam-bricks",
         "description" : "안녕하세요. 마블과 스타워즈로 IP 창작을 진행하는 HaeDam_bricks라고 합니다",
         "tags" : [
@@ -10,6 +11,7 @@
             {
                 "name" : "Ultimate Cute Series: 스타워즈 우주선 3종",
                 "intruduction" : "안녕하세요. HaeDam_bricks입니다. 제가 소개할 작품은 ‘Ultimate Cute Series: 스타워즈 우주선 3종’입니다. 스타워즈 프랜차이즈 내에서 마스코트 우주선인 '밀레니엄 팔콘'. 제국군의 상징과도 같은 함선인 '임페리얼 스타 디스트로이어'. 공화국의 가장 큰 순양함인 '베나터급 공화국 공격 순양함'을 만들었습니다. 이 3가지의 우주선은 LEGO 공식 UCS 시리즈로 출시한 적이 있는 모델들인데요. 최소가격 80만원 상당에 육박하는 엄청난 제품들로, 정말 큰 맘먹고 구매하지 않는 이상 구매하는 것 자체도 힘든 제품들인 것이 특징입니다. 가격만큼 제품의 크기도 상당하기 때문에 전시공간을 마련하는 것도 큰 문제인데요. 가격과 공간때문에 섣불리 구입하지 못하시는 분들을 위해서, 크기와 가격 모두 대폭 작아진 저만의 UCS 시리즈를 소개합니다! LEGO 공식 UCS는 'Ultimate Collector Series'로 성인 팬들을 겨냥한 제품들에 붙는 명칭입니다. 하지만, 저의 UCS는 'Ultimate Cute Series'. UCS를 구입하지 못하는 분들을 위해 준비한 마이크로 사이즈의 UCS 시리즈입니다. 작품의 부품수, 가격, 크기 모두 공식 제품의 1/50에 가까운 마이크로한 작품들입니다! 디테일도 빼놓지 않았습니다. 전체적인 기체의 외형 자체는 모두 원작과 동일한 디자인. 작은 크기에 디테일은 최대로 꾹꾹 눌러담았습니다. 몇가지 특수 프린팅 부품을 사용해 디테일을 더욱 극대화하였습니다! 또한 각각의 작품 별로 특정한 파츠를 제거해주면, 작게 표현된 기체의 내부도 확인하실 수 있습니다. 추가로, 미니피겨를 세울 수 있는 고급스러운 검은색 디스플레이용 받침대를 사용해서 전시효과를 극대화할 수 있습니다. 3개의 작품 모두 제작하는데 비용은 LEGO 공식 UCS 제품 1개 가격의 20%에 불과합니다. 작지만 완벽한 ‘Ultimate Cute Series’를 많은 분들이 즐겨주셨으면 좋겠습니다. HaeDam_bricks였습니다.",
+                "en-introduction" : "Hello, this is HaeDam_bricks. The work I will introduce is “Ultimate Cute Series: Three Star Wars Spaceships.” The Millennium Falcon, the mascot spaceship of the Star Wars franchise. The Imperial Star Destroyer, a ship that symbolizes the Imperial Army. I created the ‘Venator-class Republic Attack Cruiser,’ the largest cruiser of the Republic. These three spaceships are models that have been officially released as part of the LEGO UCS series. They are incredibly expensive products, costing nearly 800,000 won, so they are not something you can just casually purchase without a lot of consideration. Given their size, which matches their price, securing display space is also a significant challenge. For those who cannot afford to purchase them due to their price and space requirements, I present my own UCS series, which is significantly smaller in both size and price! LEGO's official UCS stands for “Ultimate Collector Series,” a name given to products targeting adult fans. However, my UCS is the “Ultimate Cute Series.” It's a micro-sized UCS series prepared for those who can't afford the official UCS. The number of parts, price, and size of these works are all micro-sized, nearly 1/50th the size of the official products! I didn't skimp on the details either. The overall exterior design of each model is identical to the original. I packed as many details as possible into the small size. I also used some special printed parts to further maximize the details! Additionally, by removing specific parts from each model, you can see the interior of the small-scale model. Furthermore, a premium black display stand is included to showcase the mini-figures, maximizing the display effect. The cost to produce all three pieces is just 20% of the price of a single official LEGO UCS product. We hope many people will enjoy the small yet perfect “Ultimate Cute Series.” This was HaeDam_bricks.",
                 "photo" : [
                     "/haed/001.jpeg",
                     "/haed/002.jpeg",
@@ -26,6 +28,7 @@
         ]
     },
     "jae" : {
+        "link" : "jae",
         "name" : "jaewon-bricks",
         "description" : "레고로 영화에 나오는 여러가지를 만들고 있습니다",
         "tags" : [
@@ -36,6 +39,7 @@
             {
                 "name" : "바랏두르",
                 "intruduction" : "반지의 제왕에 나오는 롯데타워(?) 바랏두르를 작게 만들어 보았습니다",
+                "en-introduction" : "I made a miniature version of Barad-dûr from The Lord of the Rings.",
                 "photo" : [
                     "/jae/bal-001.jpeg",
                     "/jae/bal-002.jpeg",
@@ -47,6 +51,7 @@
             {
                 "name" : "뭉크의 절규",
                 "intruduction" : "유명한 미술가 뭉크의 ‘절규’ 작품을 만들어 보았습니다 😱",
+                "en-introduction" : "I tried to recreate Munch's famous painting “The Scream.” 😱",
                 "photo" : [
                     "/jae/munk-001.jpeg",
                     "/jae/munk-002.jpeg",
@@ -56,6 +61,7 @@
             },{
                 "name" : "스타워즈 - 데스스타",
                 "intruduction" : "영화 <스타워즈>의 강력한 아이덴티티 ‘데스 스타‘를 레고로 만들어 보았습니다",
+                "en-introduction" : "We created the powerful Star Wars icon, the Death Star, out of LEGO bricks.",
                 "photo" : [
                     "/jae/star-001.jpeg",
                     "/jae/star-002.jpeg",
@@ -65,6 +71,7 @@
         ]
     },
     "wxv" : {
+        "link" : "wxv",
         "name" : "vinjas",
         "description" : "무엇무엇을뭐잘하는우빈입니다~",
         "tags" : [
@@ -75,6 +82,7 @@
             {
                 "name" : "에어 조던 1 시카고",
                 "intruduction" : "안녕하세요. 에어 조던 1 시카고를 만든 vinjas라고 합니다. 이 작품은 689개의 브릭수로 나이키 사의 에어 조던 1 시카고 를 만든 작품입니다. 명판도 제가 순수 제작하였습니다. @vinjas_ 많은 팔로우 부탁드립니다. 궁금한 점이 있으시다면, 디엠 부탁드립니다. ",
+                "en-introduction" : "I created a miniature version of the Nike Air Jordan 1 Chicago. It took 689 LEGO bricks to recreate the Nike Air Jordan 1 Chicago. I also created the Nike Air Jordan 1 Chicago's signature. @vinjas_ Thank you for following me. If you have any questions, please DM me.",
                 "photo" : [
                     "/wxv/001.jpeg",
                     "/wxv/002.jpeg",
