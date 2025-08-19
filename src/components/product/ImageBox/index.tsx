@@ -6,7 +6,7 @@ import s from './style.module.scss';
 import { useState } from "react";   
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-export default function ImageBox({ photos, onImageClick }: { photos: string[]; onImageClick?: () => void }) {
+export default function ImageBox({ photos, onImageClick }: { photos: string[]; onImageClick?: (photo: string) => void }) {
     const [currentThisPhoto, setCurrentThisPhoto] = useState(0);
     
     return (
@@ -15,7 +15,7 @@ export default function ImageBox({ photos, onImageClick }: { photos: string[]; o
                 src={`/images${photos[currentThisPhoto]}`} 
                 alt={photos[currentThisPhoto]} 
                 className={s.thumbnail} 
-                onClick={onImageClick}
+                onClick={() => onImageClick?.(photos[currentThisPhoto])}
             />      
             <HStack align="center" justify="center" gap={8}>
             <ChevronLeft 

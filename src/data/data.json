@@ -37,6 +37,16 @@
         ],
         "products" : [
             {
+                "name" : "스타워즈 - 데스스타",
+                "intruduction" : "영화 <스타워즈>의 강력한 아이덴티티 ‘데스 스타‘를 레고로 만들어 보았습니다",
+                "en-introduction" : "We created the powerful Star Wars icon, the Death Star, out of LEGO bricks.",
+                "photo" : [
+                    "/jae/star-001.jpeg",
+                    "/jae/star-002.jpeg",
+                    "/jae/star-003.jpeg"
+                ]
+            },
+            {
                 "name" : "바랏두르",
                 "intruduction" : "반지의 제왕에 나오는 롯데타워(?) 바랏두르를 작게 만들어 보았습니다",
                 "en-introduction" : "I made a miniature version of Barad-dûr from The Lord of the Rings.",
@@ -57,15 +67,6 @@
                     "/jae/munk-002.jpeg",
                     "/jae/munk-003.jpeg",
                     "/jae/munk-004.jpeg"
-                ]
-            },{
-                "name" : "스타워즈 - 데스스타",
-                "intruduction" : "영화 <스타워즈>의 강력한 아이덴티티 ‘데스 스타‘를 레고로 만들어 보았습니다",
-                "en-introduction" : "We created the powerful Star Wars icon, the Death Star, out of LEGO bricks.",
-                "photo" : [
-                    "/jae/star-001.jpeg",
-                    "/jae/star-002.jpeg",
-                    "/jae/star-003.jpeg"
                 ]
             }
         ]

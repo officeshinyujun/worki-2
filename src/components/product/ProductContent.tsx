@@ -7,6 +7,7 @@ import { ChevronLeft } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import ImageBox from './ImageBox';
+import PhotoModal from './PhotoModal';
 
 interface Brand {
   name: string;
@@ -27,8 +28,11 @@ interface ProductContentProps {
 export default function ProductContent({ brand, product, brandKey }: ProductContentProps) {
   const router = useRouter();
   const [isEn, setIsEn] = useState(false);
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+  const [currentPhoto, setCurrentPhoto] = useState('');
 
   return (
+    <>
     <VStack className={s.container} justify='flex-start' align='flex-start' gap={16}>
     <div style={{ cursor: 'pointer' }}>
         <ChevronLeft 
@@ -53,8 +57,11 @@ export default function ProductContent({ brand, product, brandKey }: ProductCont
         <p className={s.photoTitle}>사진</p>
         <ImageBox
         photos={product.photo}
+        onImageClick={(photo) => {setCurrentPhoto(photo); setIsPhotoModalOpen(true)}}
         />
       </VStack>
     </VStack>
+     <PhotoModal photo={currentPhoto} isPhotoModalOpen={isPhotoModalOpen} setIsPhotoModalOpen={setIsPhotoModalOpen}/>
+    </>
   );
 }
