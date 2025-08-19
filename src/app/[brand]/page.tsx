@@ -18,14 +18,7 @@ const normalizeProducts = (products: Product[]) => {
   }));
 };
 
-type PageProps = {
-  params: {
-    brand: string;
-  };
-};
-
-export default async function BrandPage({ params }: PageProps) {
-  // Await the params if they're a Promise
+export default async function BrandPage({ params }: any) {
   const resolvedParams = await params;
   const brandKey = resolvedParams.brand as BrandKey;
   const brandData = data[brandKey];
@@ -34,7 +27,6 @@ export default async function BrandPage({ params }: PageProps) {
     notFound();
   }
 
-  // Normalize the products data to handle the typo
   const normalizedProducts = normalizeProducts(brandData.products);
 
   return (
