@@ -3,8 +3,15 @@ import data from '@/data/data.json';
 import type { BrandKey } from '@/types';
 import BrandContent from '@/components/brand/BrandContent';
 
+interface Product {
+  name: string;
+  introduction?: string;
+  intruduction?: string;
+  photo: string[];
+}
+
 // Fix the data structure to handle the typo in the data
-const normalizeProducts = (products: any[]) => {
+const normalizeProducts = (products: Product[]) => {
   return products.map(product => ({
     ...product,
     introduction: product.introduction || product.intruduction || ''

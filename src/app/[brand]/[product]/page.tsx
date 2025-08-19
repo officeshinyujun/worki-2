@@ -17,10 +17,8 @@ interface SearchParams {
 
 export default async function ProductPage({
   params,
-  searchParams,
 }: {
   params: Promise<PageParams>;
-  searchParams?: Promise<SearchParams>;
 }) {
   // ✅ 비동기 props 해제
   const { brand: brandKey, product: productId } = await params;
