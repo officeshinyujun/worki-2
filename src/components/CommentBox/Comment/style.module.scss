@@ -1,0 +1,26 @@
+.container{
+    width: 100%;
+    border-bottom : 1px solid #E2E2E2;
+    padding: 8px 0;
+}
+
+.image{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.nickname{
+    font-size: 16px;
+    font-weight: 500;
+    color : #696969;
+}
+
+.comment { 
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.spacer{
+    width: 30px;
+}

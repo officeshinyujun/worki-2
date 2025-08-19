@@ -8,6 +8,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import ImageBox from './ImageBox';
 import PhotoModal from './PhotoModal';
+import Footer from '../Footer';
+import CommentBox from '../CommentBox';
 
 interface Brand {
   name: string;
@@ -32,7 +34,6 @@ export default function ProductContent({ brand, product, brandKey }: ProductCont
   const [currentPhoto, setCurrentPhoto] = useState('');
 
   return (
-    <>
     <VStack className={s.container} justify='flex-start' align='flex-start' gap={16}>
     <div style={{ cursor: 'pointer' }}>
         <ChevronLeft 
@@ -60,8 +61,9 @@ export default function ProductContent({ brand, product, brandKey }: ProductCont
         onImageClick={(photo) => {setCurrentPhoto(photo); setIsPhotoModalOpen(true)}}
         />
       </VStack>
+      <PhotoModal photo={currentPhoto} isPhotoModalOpen={isPhotoModalOpen} setIsPhotoModalOpen={setIsPhotoModalOpen}/>
+      <CommentBox />
     </VStack>
-     <PhotoModal photo={currentPhoto} isPhotoModalOpen={isPhotoModalOpen} setIsPhotoModalOpen={setIsPhotoModalOpen}/>
-    </>
+    
   );
 }
