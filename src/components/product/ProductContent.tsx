@@ -5,6 +5,8 @@ import { VStack } from '../VStack';
 import s from './style.module.scss';
 import { ChevronLeft } from 'lucide-react';
 import Image from 'next/image';
+import { useState } from 'react';
+import ImageBox from './ImageBox';
 
 interface Brand {
   name: string;
@@ -16,6 +18,7 @@ interface ProductContentProps {
   product: {
     name: string;
     introduction?: string;
+    'en-introduction'?: string;
     photo: string[];
   };
   brandKey: string;
@@ -23,6 +26,7 @@ interface ProductContentProps {
 
 export default function ProductContent({ brand, product, brandKey }: ProductContentProps) {
   const router = useRouter();
+  const [isEn, setIsEn] = useState(false);
 
   return (
     <VStack className={s.container} justify='flex-start' align='flex-start' gap={16}>
@@ -33,7 +37,7 @@ export default function ProductContent({ brand, product, brandKey }: ProductCont
         onClick={() => router.push(`/${brand.link}`)}
       />
     </div>
-      <VStack justify='flex-start' align='flex-start' gap={12}>
+      <VStack justify='flex-start' align='flex-start' gap={16}>
         <Image 
           src={`/images${product.photo[0]}`} 
           alt={product.name} 
@@ -42,7 +46,14 @@ export default function ProductContent({ brand, product, brandKey }: ProductCont
           height={300} 
         />
         <p className={s.name}>{product.name}</p>
-        <p className={s.introduction}>{product.introduction}</p>
+        <button onClick={() => setIsEn(!isEn)} style={{ cursor: 'pointer' }} className={s.changeLanguage}>change to {isEn ? 'Korean' : 'English'}</button>
+        <p className={s.introduction}>{isEn ? product['en-introduction'] : product.introduction}</p>
+      </VStack>
+      <VStack justify='flex-start' align='flex-start' gap={16} style={{width: '100%'}}>
+        <p className={s.photoTitle}>사진</p>
+        <ImageBox
+        photos={product.photo}
+        />
       </VStack>
     </VStack>
   );
