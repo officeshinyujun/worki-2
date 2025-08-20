@@ -29,8 +29,13 @@ interface BrandData {
   products: Product[];
 }
 
-export default async function BrandPage({ params }: { params: { brand: string } }) {
-  const brandKey = params.brand as BrandKey;
+export default async function BrandPage({
+  params,
+}: {
+  params: Promise<{ brand: string }>;
+}) {
+  const { brand } = await params; // ✅ Next.js 14 이후 방식
+  const brandKey = brand as BrandKey;
   const brandData = data[brandKey] as BrandData | undefined;
 
   if (!brandData) {
@@ -38,10 +43,11 @@ export default async function BrandPage({ params }: { params: { brand: string } 
   }
 
   return (
-    <BrandContent 
+    <BrandContent
       brandName={brandData.name}
       //@ts-ignore
       brandDescription={brandData.description}
+      //@ts-ignore
       brandTags={brandData.tags}
       brandLink={brandData.link}
       products={brandData.products}
