@@ -93,5 +93,64 @@
                 ]
             }
         ]
+    },
+    "hajun" : {
+        "link" : "hajun",
+        "name" : "hajun",
+        "description" : "레고를 좋아하는 고등학생 Hajun입니다",
+        "tags" : [
+            "히어로 팩토리",
+            "Ferrari",
+            "Modifications"
+        ],
+        "products" : [
+            {
+                "name" : "네오",
+                "introduction" : "Rookie Hero Neo입니다.",
+                "en-introduction" : "Rookie Hero Neo.",
+                "photo" : [
+                    "/hajun/h-001.jpeg",
+                    "/hajun/h-002.jpeg",
+                    "/hajun/h-003.jpeg"
+                ]
+            },
+            {
+                "name" : "Ferrari F40 Mod",
+                "introduction" : "페라리 F40의 앞뒤 부분을 개방형으로 만들었습니다.",
+                "en-introduction" : "Ferrari F40 with opening front and back.",
+                "photo" : [
+                    "/hajun/f-001.jpeg",
+                    "/hajun/f-002.jpeg"
+                ]
+            }
+        ]
+    },
+    "mang" : {
+        "link" : "mang",
+        "name" : "Mangong_bignose",
+        "description" : "레고로 차량이나 메카, 디오라마 만드는 맹꽁입니다.",
+        "tags" : [
+            "차량",
+            "디오라마"
+        ],
+        "products" : [
+            {
+                "name" : "라이노",
+                "introduction" : "스페이스 오페라 Warhammer 40000에 등장하는 장갑차 라이노입니다. 육중한 모습을 살려보려고 노력했습니다. 내부는 비어 있어, 미피의 탑승이 가능합니다.",
+                "en-introduction" : "This is the Rhino armored vehicle that appears in the space opera Warhammer 40,000. I tried to capture its heavy appearance. The interior is empty, so Miffy can ride in it.",
+                "photo" : [
+                    "/mang/c-001.jpeg",
+                    "/mang/c-002.jpeg"
+                ]
+            },
+            {
+                "name" : "아르타니스",
+                "introduction" : "스타크래프트 시리즈에 등장하는 프로토스의 리더, 아르타니스입니다. 복잡한 갑옷 형태와 투구 형상을 재현하기 위해 노력했습니다.",
+                "en-introduction" : "This is Artanis, the leader of the Protoss in the StarCraft series. I tried to recreate the complex armor and helmet shape.",
+                "photo" : [
+                    "/mang/m-001.jpeg"
+                ]
+            }
+        ]
     }
 }

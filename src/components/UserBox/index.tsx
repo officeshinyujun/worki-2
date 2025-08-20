@@ -28,7 +28,7 @@ export default function UserBox({ name, description, tags, backgroundImage, link
             >
                 <p className={s.name}>{name}</p>
                 <p className={s.description}>{description}</p>
-                <HStack align="center" justify="flex-start" gap={12}>
+                <HStack align="flex-start" justify="flex-start" gap={8} wrap="wrap">
                     {tags.map((tag, index) => (
                         <Tag key={index} tag={tag} />
                     ))}

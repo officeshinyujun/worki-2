@@ -12,6 +12,8 @@ export default function Home() {
             <UserBox name={data.haed.name} description={data.haed.description} tags={data.haed.tags} backgroundImage={data.haed.products[0].photo[0]} link="/haed" />
             <UserBox name={data.jae.name} description={data.jae.description} tags={data.jae.tags} backgroundImage={data.jae.products[0].photo[0]} link="/jae" />
             <UserBox name={data.wxv.name} description={data.wxv.description} tags={data.wxv.tags} backgroundImage={data.wxv.products[0].photo[0]} link="/wxv" />
+            <UserBox name={data.hajun.name} description={data.hajun.description} tags={data.hajun.tags} backgroundImage={data.hajun.products[0].photo[0]} link="/hajun" />
+            <UserBox name={data.mang.name} description={data.mang.description} tags={data.mang.tags} backgroundImage={data.mang.products[0].photo[0]} link="/mang" />
         </VStack>
         <Footer />
     </VStack>

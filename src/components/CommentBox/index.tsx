@@ -5,7 +5,6 @@ import s from './style.module.scss';
 import Comment from './Comment';
 import { HStack } from "../HStack";
 import { ArrowUpFromLine } from "lucide-react";
-import comment from '@/data/coment.json';
 import { faker } from "@faker-js/faker";
 import { useState, useEffect } from "react";  // 추가
 import { usePathname } from 'next/navigation';

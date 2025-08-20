@@ -1,0 +1,28 @@
+{
+    "name" : "hajun",
+    "description" : "레고를 좋아하는 고등학생 Hajun입니다",
+    "tags" : [
+        "히어로 팩토리",
+        "Ferrari",
+        "Modifications"
+    ],
+    "products" : [
+        {
+            "name" : "네오",
+            "introduction" : "Rookie Hero Neo입니다.",
+            "photo" : [
+                "/hajun/h-001.jpeg",
+                "/hajun/h-002.jpeg",
+                "/hajun/h-003.jpeg"
+            ]
+        },
+        {
+            "name" : "Ferrari F40 Mod",
+            "introduction" : "Ferrari F40 with opening front and back",
+            "photo" : [
+                "/hajun/f-001.jpeg",
+                "/hajun/f-002.jpeg"
+            ]
+        }
+    ]
+}
