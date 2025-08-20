@@ -29,7 +29,7 @@ interface BrandData {
   products: Product[];
 }
 
-export default function BrandPage({ params }: { params: { brand: string } }) {
+export default async function BrandPage({ params }: { params: { brand: string } }) {
   const brandKey = params.brand as BrandKey;
   const brandData = data[brandKey] as BrandData | undefined;
 
