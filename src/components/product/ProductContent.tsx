@@ -10,6 +10,7 @@ import ImageBox from './ImageBox';
 import PhotoModal from './PhotoModal';
 import Footer from '../Footer';
 import CommentBox from '../CommentBox';
+import useLanguage from '@/store/useLanguage';
 
 interface Brand {
   name: string;
@@ -19,19 +20,17 @@ interface Brand {
 interface ProductContentProps {
   brand: Brand;
   product: {
-    name: string;
-    introduction?: string;
-    'en-introduction'?: string;
+    name: string | { ko: string; en: string };
+    introduction: string | { ko: string; en: string };
     photo: string[];
   };
-  brandKey: string;
 }
 
-export default function ProductContent({ brand, product, brandKey }: ProductContentProps) {
+export default function ProductContent({ brand, product }: ProductContentProps) {
   const router = useRouter();
-  const [isEn, setIsEn] = useState(false);
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
   const [currentPhoto, setCurrentPhoto] = useState('');
+  const { language , setLanguage} = useLanguage();
 
   return (
     <VStack className={s.container} justify='flex-start' align='flex-start' gap={16}>
@@ -45,17 +44,17 @@ export default function ProductContent({ brand, product, brandKey }: ProductCont
       <VStack justify='flex-start' align='flex-start' gap={16}>
         <Image 
           src={`/images${product.photo[0]}`} 
-          alt={product.name} 
+          alt={product.name[language as keyof typeof product.name]} 
           className={s.thumbnail} 
           width={500} 
           height={300} 
         />
-        <p className={s.name}>{product.name}</p>
-        <button onClick={() => setIsEn(!isEn)} style={{ cursor: 'pointer' }} className={s.changeLanguage}>change to {isEn ? 'Korean' : 'English'}</button>
-        <p className={s.introduction}>{isEn ? product['en-introduction'] : product.introduction}</p>
+        <p className={s.name}>{product.name[language as keyof typeof product.name]}</p>
+        <button onClick={() => setLanguage(language === 'ko' ? 'en' : 'ko')} style={{ cursor: 'pointer' }} className={s.changeLanguage}>change to {language === 'ko' ? 'English' : 'Korean'}</button>
+        <p className={s.introduction}>{product.introduction[language as keyof typeof product.introduction]}</p>
       </VStack>
       <VStack justify='flex-start' align='flex-start' gap={16} style={{width: '100%'}}>
-        <p className={s.photoTitle}>사진</p>
+        <p className={s.photoTitle}>{language === 'ko' ? '사진' : 'Photos'}</p>
         <ImageBox
         photos={product.photo}
         onImageClick={(photo) => {setCurrentPhoto(photo); setIsPhotoModalOpen(true)}}

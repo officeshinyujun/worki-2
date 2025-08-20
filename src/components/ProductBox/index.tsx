@@ -7,13 +7,10 @@ interface ProductBoxProps {
     backgroundImage: string;
     name: string;
     description: string;
-    introduction?: string; // Handle the typo in the data
 }
 
-export default function ProductBox({ backgroundImage, name, description, introduction }: ProductBoxProps) {
-
+export default function ProductBox({ backgroundImage, name, description }: ProductBoxProps) {
     const fullImagePath = backgroundImage.startsWith('http') ? backgroundImage : `/images${backgroundImage}`;
-    const displayDescription = description || introduction || '';
     
     return (
         <VStack 
@@ -24,7 +21,7 @@ export default function ProductBox({ backgroundImage, name, description, introdu
             gap={8}
         >
             <p className={s.name}>{name}</p>
-            <p className={s.description}>{(displayDescription || '').substring(0, 20)}...</p>
+            <p className={s.description}>{description.substring(0, 20)}...</p>
         </VStack>
     );
 }

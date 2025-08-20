@@ -7,19 +7,22 @@ import { ChevronLeft } from 'lucide-react';
 import ProductBox from '../ProductBox';
 import s from '../../app/[brand]/style.module.scss';
 import { useRouter } from 'next/navigation';
+import Header from '../Header';
+import useLanguage from '@/store/useLanguage';
 
 type BrandContentProps = {
   brandName: string;
   brandLink: string;
   products: Array<{
-    name: string;
-    intruduction?: string; // Handle typo in the data
+    name: string | { ko: string; en: string };
+    introduction: string | { ko: string; en: string };  // Fixed the typo here
     photo: string[];
   }>;
 };
 
 export default function BrandContent({ brandName, brandLink, products }: BrandContentProps) {
   const router = useRouter();
+  const { language } = useLanguage();
   const handleBack = () => {
     router.push(`/`);
   };
@@ -30,6 +33,7 @@ export default function BrandContent({ brandName, brandLink, products }: BrandCo
 
   return (
     <div className={s.container}>
+      <Header />
       <VStack className={s.contentsContainer} gap={16}>
         <div onClick={handleBack} style={{ cursor: 'pointer' }}>
           <HStack gap={8} align='center' justify='flex-start'>
@@ -45,8 +49,8 @@ export default function BrandContent({ brandName, brandLink, products }: BrandCo
               style={{ width: '100%', cursor: 'pointer' }}
             >
               <ProductBox
-                name={product.name}
-                description={product.intruduction || ''}
+                name={product.name[language as keyof typeof product.name]}
+                description={product.introduction[language as keyof typeof product.introduction] || ''}
                 backgroundImage={product.photo?.[0] || ''}
               />
             </div>

@@ -4,42 +4,53 @@ import type { BrandKey } from '@/types';
 import BrandContent from '@/components/brand/BrandContent';
 
 interface Product {
-  name: string;
-  introduction?: string;
-  intruduction?: string;
+  name: {
+    ko: string;
+    en: string;
+  };
+  introduction: {
+    ko: string;
+    en: string;
+  };
   photo: string[];
 }
 
-// Fix the data structure to handle the typo in the data
-const normalizeProducts = (products: Product[]) => {
-  return products.map(product => ({
-    ...product,
-    introduction: product.introduction || product.intruduction || ''
-  }));
-};
+interface BrandData {
+  name: string;
+  link: string;
+  description: {
+    ko: string;
+    en: string;
+  };
+  tags: {
+    ko: string[];
+    en: string[];
+  };
+  products: Product[];
+}
 
-export default async function BrandPage({ params }: any) {
-  const resolvedParams = await params;
-  const brandKey = resolvedParams.brand as BrandKey;
-  const brandData = data[brandKey];
+export default function BrandPage({ params }: { params: { brand: string } }) {
+  const brandKey = params.brand as BrandKey;
+  const brandData = data[brandKey] as BrandData | undefined;
 
   if (!brandData) {
     notFound();
   }
 
-  const normalizedProducts = normalizeProducts(brandData.products);
-
   return (
     <BrandContent 
       brandName={brandData.name}
-      brandLink={brandData.link || brandKey}
-      products={normalizedProducts}
+      //@ts-ignore
+      brandDescription={brandData.description}
+      brandTags={brandData.tags}
+      brandLink={brandData.link}
+      products={brandData.products}
     />
   );
 }
 
-export async function generateStaticParams() {
-  return Object.keys(data).map(brand => ({
+export function generateStaticParams() {
+  return Object.keys(data).map((brand) => ({
     brand,
   }));
 }

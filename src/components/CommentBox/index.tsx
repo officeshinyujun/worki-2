@@ -9,6 +9,7 @@ import { faker } from "@faker-js/faker";
 import { useState, useEffect } from "react";  // 추가
 import { usePathname } from 'next/navigation';
 import { commentRead, commentWrite } from '@/features/https';
+import useLanguage from '@/store/useLanguage';
 
 interface Comment {
     _id: string;
@@ -25,6 +26,7 @@ export default function CommentBox() {
     const [content, setContent] = useState('');
     const pathname = usePathname();
     const formattedPath = pathname.replace(/\//g, '-').substring(1); // 맨 앞의 '/' 제거
+    const { language } = useLanguage();
     // 클라이언트 사이드에서만 실행되도록 useEffect 사용
     useEffect(() => {
         setFakerImage(faker.image.avatar());
@@ -59,7 +61,7 @@ export default function CommentBox() {
 
     return (
         <VStack align="flex-start" justify="flex-start" gap={16} className={s.container}>
-            <p className={s.title}>댓글</p>
+            <p className={s.title}>{language === 'ko' ? '댓글' : 'Comments'}</p>
             {comments && comments.length > 0 ? (
             comments.map((comment, index) => (
                 <Comment
@@ -70,7 +72,7 @@ export default function CommentBox() {
                 />
             ))
 ) : (
-    <p>댓글이 없습니다. 첫 댓글을 남겨보세요!</p>
+    <p>{language === 'ko' ? '댓글이 없습니다. 첫 댓글을 남겨보세요!' : 'There are no comments. Leave the first comment!'}</p>
 )}
             <HStack align="center" justify="center" gap={12} style={{width: '100%'}}>
     {fakerImage && (
@@ -83,7 +85,7 @@ export default function CommentBox() {
     <input 
         type="text" 
         className={s.nameInput} 
-        placeholder="남길 이름을 입력하십시오..."
+        placeholder={language === 'ko' ? '남길 이름을 입력하십시오...' : 'Enter your name...'}
         value={name}
         onChange={(e) => setName(e.target.value)}
     />
@@ -92,7 +94,7 @@ export default function CommentBox() {
     <div style={{ width: '30px', flexShrink: 0 }} />
     <input 
         type="text" 
-        placeholder="댓글을 입력하세요..." 
+        placeholder={language === 'ko' ? '댓글을 입력하세요...' : 'Enter your comment...'} 
         className={s.commentInput}
         value={content}
         onChange={(e) => setContent(e.target.value)}

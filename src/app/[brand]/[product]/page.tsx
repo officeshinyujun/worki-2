@@ -35,7 +35,6 @@ export default async function ProductPage({
     <ProductContent 
       brand={brand}
       product={normalizedProduct}
-      brandKey={brandKey}
     />
     
   );
