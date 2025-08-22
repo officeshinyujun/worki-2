@@ -211,5 +211,58 @@
           ]
         }
       ]
-    }
+    },
+    "hottuck": {
+      "link": "hottuck",
+      "name": "빨간호떡",
+      "description": {
+          "ko": "주로 바이오니클 창작을 하거나 합체로봇, 메카닉, 슈퍼로봇 등을 만드는 빨간호떡 이라 합니다.",
+          "en": "He is known as Red Hotcake, who mainly creates Bio-Nic works and makes combination robots, mecha, super robots, etc."
+      },
+      "tags": {
+          "ko": ["바이오니클", "메카닉", "슈퍼로봇"],
+          "en": ["Bio-Nic", "Mecha", "Super Robot"]
+      },
+      "products": [
+          {
+              "name": {
+                  "ko": "겟타로보 - G",
+                  "en": "Getter Robo - G"
+              },
+              "introduction": {
+                  "ko": "올해 첫 공개하는 작품으로 겟타로보G 에 나오는 기체인 겟타 드래곤을 만들어 봤습니다.",
+                  "en": "As my first work to be unveiled this year, I created Getter Dragon, a machine that appears in Getter Robo G."
+              },
+              "photo": [
+                  "/hottuck/r2-001.jpeg"
+              ]
+          },
+          {
+              "name": {
+                  "ko": "헌터즈 타후",
+                  "en": "Hunter's Aftermath"
+              },
+              "introduction": {
+                  "ko": "작년에 전시하였던 '헌터즈 타후' 를 리메이크하여 더욱 사냥꾼 같고 육중하게 만들어 봤습니다.",
+                  "en": "As a remake of the 'Hunter's Aftermath' displayed last year, I created a more hunter-like and solid version."
+              },
+              "photo": [
+                  "/hottuck/g-001.jpeg"
+              ]
+          },
+          {
+              "name": {
+                  "ko": "타카누바",
+                  "en": "Takanuba"
+              },
+              "introduction": {
+                  "ko": "바이오니클에 나오는 토아누바 토아인 타카누바를 제 스타일대로 리메이크 하여 만들어 봤습니다.",
+                  "en": "As a remake of the Takanuba from Bio-Nic, I created a more hunter-like and solid version."
+              },
+              "photo": [
+                  "/hottuck/r-001.jpeg"
+              ]
+          }
+      ]
+  }
   }

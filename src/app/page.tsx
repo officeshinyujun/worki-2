@@ -22,6 +22,7 @@ export default function Home() {
             <UserBox name={data.wxv.name} description={data.wxv.description[language]} tags={data.wxv.tags[language]} backgroundImage={data.wxv.products[0].photo[0]} link="/wxv" />
             <UserBox name={data.hajun.name} description={data.hajun.description[language]} tags={data.hajun.tags[language]} backgroundImage={data.hajun.products[0].photo[0]} link="/hajun" />
             <UserBox name={data.mang.name} description={data.mang.description[language]} tags={data.mang.tags[language]} backgroundImage={data.mang.products[0].photo[0]} link="/mang" />
+            <UserBox name={data.hottuck.name} description={data.hottuck.description[language]} tags={data.hottuck.tags[language]} backgroundImage={data.hottuck.products[0].photo[0]} link="/hottuck" />
         </VStack>
         <Footer />
     </VStack>
