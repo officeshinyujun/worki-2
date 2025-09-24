@@ -8,10 +8,12 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ImageSkeleton from "@/components/ImageSkeleton";
 
-export default function ImageBox({ photos, onImageClick }: { 
-  photos: string[]; 
-  onImageClick?: (photo: string) => void 
-}) {
+interface ImageBoxProps {
+  photos: string[];
+  onImageClick?: (photo: string, index: number) => void;
+}
+
+export default function ImageBox({ photos, onImageClick }: ImageBoxProps) {
   const [currentThisPhoto, setCurrentThisPhoto] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState('');
@@ -46,7 +48,7 @@ export default function ImageBox({ photos, onImageClick }: {
           alt={`Photo ${currentThisPhoto + 1}`} 
           className={`${s.thumbnail} ${isLoading ? s.hidden : ''}`}
           onLoad={handleImageLoad}
-          onClick={() => onImageClick?.(currentImage)}
+          onClick={() => onImageClick?.(currentImage, currentThisPhoto)}
         />
       </div>
       <HStack align="center" justify="center" gap={8}>

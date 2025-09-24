@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import data from '@/data/data.json';
 import type { BrandKey } from '@/types/index.d.ts';
 import ProductContent from '@/components/product/ProductContent';
-
 interface PageParams {
   brand: BrandKey;
   product: string;
@@ -32,7 +31,7 @@ export default async function ProductPage({
   };
 
   return (
-    <ProductContent 
+    <ProductContent
       brand={brand}
       product={normalizedProduct}
     />
