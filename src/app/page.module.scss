@@ -1,9 +1,123 @@
+
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperozi';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+
+
 .container {
     width: 100vw;
     min-height: 100vh;
 }
 
-.userBoxContainer{
-    min-height: 100vh;
+.userBoxContainer {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* 부드러운 스크롤링을 위한 속성 */
+    
+    /* 스크롤바 스타일링 (선택사항) */
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.backgroundImage {
+    width: 100%;
+    top: -50px;
+    position: absolute;
+    z-index: -1;
+}
+
+.welcomeContainer{
+    width: 100%;
+    padding: 32px;
+}
+
+.welcomeTitle {
+    font-size: 52px;
+    font-weight: 700;
+    color: #2F6AFF;
+    font-family: 'Paperozi';
+}
+
+.welcomeDescription {
+    font-size: 24px;
+    font-weight: 400;
+    color: #696969;
+    font-family: 'Paperozi';
+}
+
+.productContainer {
+    width: calc(100% - 48px);
     padding: 16px;
+    margin: 24px;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.10);
 }
